@@ -1,7 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { AppMaterialModule } from './app-material/app-material.module';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatButtonModule, MatCheckboxModule, MatRadioModule} from '@angular/material';
+import {FormsModule} from '@angular/forms';
+import {MatCardModule} from '@angular/material/card';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatInputModule} from '@angular/material/input';
 
 
 @NgModule({
@@ -10,7 +15,16 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    AppMaterialModule
+    BrowserAnimationsModule,
+
+    FormsModule,
+
+    MatCheckboxModule,
+    MatInputModule,
+    MatRadioModule,
+    MatButtonModule,
+    MatDividerModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

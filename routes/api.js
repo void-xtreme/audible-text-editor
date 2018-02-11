@@ -1,8 +1,6 @@
 const express = require('express');
 const router = express.Router();
 
-const http  = require('http');
-const url   = require('url');
 const shell = require('shelljs');
 const files = require('fs');
 const path  = require('path');
