@@ -9,22 +9,23 @@ const path  = require('path');
 const util  = require('util');
 
 const voice          = "voice_ucsc_sin_sdn_diphone";
-const outputFileName = path.join(__dirname, 'output/voice.wav');
+const outputFileName = path.join(__dirname, '../output/voice.wav');
 
 // Generate command
 function generateCommand(text, voice, output){
-  var command = util.format("echo '%s' | text2wave -o %s -eval '(%s)'", text, output, voice);
+  // var command = util.format("echo '%s' | text2wave -o %s -eval '(%s)'", text, output, voice);
+  var command = util.format("echo '%s' | text2wave -o %s", text, output);
   return command;
 };
 
 /* GET api listing. */
-router.get('/:tts', (req, res) => {
+router.get('/:text', (req, res) => {
   // Parse GET Data
-  var param = req.params.tts;
+  var text = req.params.text;
 
   // Execute TTS
-  var command = generateCommand(param.text, voice, outputFileName);
-  console.log("Executing TTS: " + param.text);
+  var command = generateCommand(text, voice, outputFileName);
+  console.log("Executing TTS: " + text);
   shell.exec(command);
 
   // Return voice file
