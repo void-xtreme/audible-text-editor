@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {FestivalService} from './services/festival.service';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,7 @@ export class AppComponent {
   public ttsType = 'document';
   public ttsText: string;
 
-  constructor() {
+  constructor(private festivalService: FestivalService) {
   }
 
   onClickReadButton() {

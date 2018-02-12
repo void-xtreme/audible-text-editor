@@ -7,6 +7,7 @@ import {FormsModule} from '@angular/forms';
 import {MatCardModule} from '@angular/material/card';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatInputModule} from '@angular/material/input';
+import {FestivalService} from './services/festival.service';
 
 
 @NgModule({
@@ -26,7 +27,9 @@ import {MatInputModule} from '@angular/material/input';
     MatDividerModule,
     MatCardModule
   ],
-  providers: [],
+  providers: [
+    FestivalService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
