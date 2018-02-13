@@ -1,8 +1,6 @@
 const express = require('express');
 const router = express.Router();
 
-const http  = require('http');
-const url   = require('url');
 const shell = require('shelljs');
 const files = require('fs');
 const path  = require('path');
@@ -19,7 +17,7 @@ function generateCommand(text, voice, output){
 };
 
 /* GET api listing. */
-router.get('/:text', (req, res) => {
+router.get('/tts/:text', (req, res) => {
   // Parse GET Data
   var text = req.params.text;
 
@@ -38,6 +36,17 @@ router.get('/:text', (req, res) => {
 
   var readStream = files.createReadStream(outputFileName);
   readStream.pipe(res);
+});
+
+router.get('/generate/:text', function(req, res){
+  var text = req.params.text;
+
+  // Execute TTS
+  var command = generateCommand(text, voice, outputFileName);
+  console.log("Executing TTS: " + text);
+  shell.exec(command);
+
+  res.status(200).json("xxx");
 });
 
 module.exports = router;

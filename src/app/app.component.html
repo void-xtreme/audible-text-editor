@@ -1,12 +1,11 @@
 <mat-card>
-    <mat-checkbox>Realtime</mat-checkbox>
+    <mat-checkbox name="realtimeEnabled" [(ngModel)]="realtimeEnabled">Realtime</mat-checkbox>
 
     <!-- Read button -->
-    <button mat-raised-button color="primary">Read</button>
-
+    <button mat-raised-button [disabled]=realtimeEnabled color="primary" (click)="onClickReadButton()">Read</button>
 
     <!-- Read options -->
-    <mat-radio-group>
+    <mat-radio-group [disabled]=realtimeEnabled name="ttsType" [(ngModel)]="ttsType">
         <mat-radio-button value="document">Document</mat-radio-button>
         <mat-radio-button value="sentence">Sentence</mat-radio-button>
         <mat-radio-button value="word">Word</mat-radio-button>
@@ -19,7 +18,7 @@
 
 <!-- Input area -->
 <mat-form-field>
-    <textarea matInput class="text-editor" placeholder="Type your text here" >{{ content }}</textarea>
+    <textarea matInput class="text-editor" name="ttsText" [(ngModel)]="ttsText" placeholder="Type your text here"></textarea>
 </mat-form-field>
 
 <!-- Document buttons -->
