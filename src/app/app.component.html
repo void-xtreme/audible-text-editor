@@ -19,9 +19,10 @@
 
 <!-- Input area -->
 <mat-form-field>
-    <textarea matInput class="text-editor" placeholder="Type your text here"></textarea>
+    <textarea matInput class="text-editor" placeholder="Type your text here" >{{ content }}</textarea>
 </mat-form-field>
 
 <!-- Document buttons -->
 <button mat-raised-button color="primary" class="doc-buttons">Save</button>
-<button mat-raised-button color="primary" class="doc-buttons">Open</button>
+
+<input id="file-upload" class="btn-file" type="file" accept=".txt" (change)="fileUpload($event)" value="">
