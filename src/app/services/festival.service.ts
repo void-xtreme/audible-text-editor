@@ -1,13 +1,32 @@
 import { Injectable } from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Howl, Howler} from 'howler';
 
 @Injectable()
 export class FestivalService {
 
   private speaking = false;
 
-  constructor() { }
+  constructor(private http: HttpClient) {
 
-  speak() {
+  }
 
+  speak(text: string) {
+    this.http.get('http://localhost:3000/api/generate/' + text).subscribe(data => {
+      console.log(data);
+
+      // Setup the new Howl.
+      const sound = new Howl({
+        src: ['http://localhost:3000/output/voice.wav']
+      });
+
+      // Play the sound.
+      sound.play();
+
+      console.log('333');
+
+      // Change global volume.
+      Howler.volume(0.5);
+    });
   }
 }

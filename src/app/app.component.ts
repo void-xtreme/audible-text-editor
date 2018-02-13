@@ -12,9 +12,10 @@ export class AppComponent {
   public ttsText: string;
 
   constructor(private festivalService: FestivalService) {
+
   }
 
   onClickReadButton() {
-
+    this.festivalService.speak(this.ttsText);
   }
 }

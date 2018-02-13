@@ -8,6 +8,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatInputModule} from '@angular/material/input';
 import {FestivalService} from './services/festival.service';
+import {HttpClientModule} from '@angular/common/http';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import {FestivalService} from './services/festival.service';
     BrowserAnimationsModule,
 
     FormsModule,
+    HttpClientModule,
 
     MatCheckboxModule,
     MatInputModule,
