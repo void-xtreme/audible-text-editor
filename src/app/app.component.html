@@ -23,4 +23,5 @@
 
 <!-- Document buttons -->
 <button mat-raised-button color="primary" class="doc-buttons">Save</button>
-<button mat-raised-button color="primary" class="doc-buttons">Open</button>
+
+<input id="file-upload" class="btn-file" type="file" accept=".txt" (change)="fileUpload($event)" value="">

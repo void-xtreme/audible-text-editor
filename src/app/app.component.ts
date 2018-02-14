@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {FestivalService} from './services/festival.service';
 
 @Component({
@@ -7,6 +7,9 @@ import {FestivalService} from './services/festival.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  title = 'app';
+  private fileText;
+ 
   public realtimeEnabled = false;
   public ttsType = 'document';
   public ttsText: string;
@@ -18,4 +21,16 @@ export class AppComponent {
   onClickReadButton() {
     this.festivalService.speak(this.ttsText);
   }
+
+  ngOnInit() { }
+ 
+  fileUpload(event) {
+    var reader = new FileReader();
+    reader.readAsText(event.srcElement.files[0]);
+    var me = this;
+    reader.onload = function () {
+      me.ttsText = reader.result;
+    }
+  }
+  
 }
