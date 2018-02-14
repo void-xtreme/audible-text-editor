@@ -17,16 +17,14 @@ export class FestivalService {
 
       // Setup the new Howl.
       const sound = new Howl({
-        src: ['http://localhost:3000/output/voice.wav']
+        src: ['http://localhost:3000/output/' + data]
       });
 
       // Play the sound.
       sound.play();
 
-      console.log('333');
-
       // Change global volume.
-      Howler.volume(0.5);
+      Howler.volume(1);
     });
   }
 }
