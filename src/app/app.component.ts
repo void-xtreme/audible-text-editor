@@ -19,7 +19,7 @@ export class AppComponent {
   }
 
   onClickReadButton() {
-    switch (this.ttsType){
+    switch (this.ttsType) {
       case 'document':
         this.festivalService.speak(this.ttsText);
         break;
@@ -29,6 +29,12 @@ export class AppComponent {
       case 'word':
         this.festivalService.speak(this.ttsText.split(' ').reverse()[0]);
         break;
+    }
+  }
+
+  onTextChange(event){
+    if (this.realtimeEnabled && event.keyCode == 32) {
+      this.festivalService.speak(this.ttsText.split(' ').reverse()[0]);
     }
   }
 

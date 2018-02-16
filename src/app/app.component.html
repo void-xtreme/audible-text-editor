@@ -14,7 +14,8 @@
 <br> <mat-divider></mat-divider> <br>
 
 <mat-form-field>
-    <textarea #xxx id="aaa" matInput class="text-editor" name="ttsText" [(ngModel)]="ttsText" placeholder="Type your text here"></textarea>
+    <textarea matInput class="text-editor" name="ttsText" [(ngModel)]="ttsText" (keypress)="onTextChange($event)"
+              placeholder="Type your text here"></textarea>
 </mat-form-field>
 
 <button mat-raised-button color="primary" class="doc-buttons" (click)="onClickSaveButton">Save</button>
