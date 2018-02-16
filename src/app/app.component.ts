@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FestivalService} from './services/festival.service';
+import * as FileSaver from 'file-saver';
 
 @Component({
   selector: 'app-root',
@@ -41,13 +42,13 @@ export class AppComponent {
   onClickFileUploadButton(event) {
     const reader = new FileReader();
     reader.readAsText(event.srcElement.files[0]);
-    reader.onload = function () {
+    reader.onload = () => {
       this.ttsText = reader.result;
     };
   }
 
-  onClickSaveButton(){
-
+  onClickSaveButton() {
+    const blob = new Blob([this.ttsText], {type: 'text/plain;charset=utf-8'});
+    FileSaver.saveAs(blob, 'ATE.txt');
   }
-
 }

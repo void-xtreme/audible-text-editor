@@ -6,6 +6,7 @@ import {Howl, Howler} from 'howler';
 export class FestivalService {
 
   private speaking = false;
+  private queue: string[];
 
   constructor(private http: HttpClient) {
 
