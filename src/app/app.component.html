@@ -1,27 +1,22 @@
 <mat-card>
     <mat-checkbox name="realtimeEnabled" [(ngModel)]="realtimeEnabled">Realtime</mat-checkbox>
 
-    <!-- Read button -->
     <button mat-raised-button [disabled]=realtimeEnabled color="primary" (click)="onClickReadButton()">Read</button>
 
-    <!-- Read options -->
     <mat-radio-group [disabled]=realtimeEnabled name="ttsType" [(ngModel)]="ttsType">
         <mat-radio-button value="document">Document</mat-radio-button>
         <mat-radio-button value="sentence">Sentence</mat-radio-button>
         <mat-radio-button value="word">Word</mat-radio-button>
-        <mat-radio-button value="selected">Selected</mat-radio-button>
     </mat-radio-group>
 
 </mat-card>
 
 <br> <mat-divider></mat-divider> <br>
 
-<!-- Input area -->
 <mat-form-field>
-    <textarea matInput class="text-editor" name="ttsText" [(ngModel)]="ttsText" placeholder="Type your text here"></textarea>
+    <textarea #xxx id="aaa" matInput class="text-editor" name="ttsText" [(ngModel)]="ttsText" placeholder="Type your text here"></textarea>
 </mat-form-field>
 
-<!-- Document buttons -->
-<button mat-raised-button color="primary" class="doc-buttons">Save</button>
+<button mat-raised-button color="primary" class="doc-buttons" (click)="onClickSaveButton">Save</button>
 
-<input id="file-upload" class="btn-file" type="file" accept=".txt" (change)="fileUpload($event)" value="">
+<input id="file-upload" class="btn-file" type="file" accept=".txt" (change)="onClickFileUploadButton($event)" value="">

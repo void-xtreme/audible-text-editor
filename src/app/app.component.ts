@@ -9,7 +9,7 @@ import {FestivalService} from './services/festival.service';
 export class AppComponent {
   title = 'app';
   private fileText;
- 
+
   public realtimeEnabled = false;
   public ttsType = 'document';
   public ttsText: string;
@@ -19,18 +19,29 @@ export class AppComponent {
   }
 
   onClickReadButton() {
-    this.festivalService.speak(this.ttsText);
-  }
-
-  ngOnInit() { }
- 
-  fileUpload(event) {
-    var reader = new FileReader();
-    reader.readAsText(event.srcElement.files[0]);
-    var me = this;
-    reader.onload = function () {
-      me.ttsText = reader.result;
+    switch (this.ttsType){
+      case 'document':
+        this.festivalService.speak(this.ttsText);
+        break;
+      case 'sentence':
+        this.festivalService.speak(this.ttsText.split('.').reverse()[0]);
+        break;
+      case 'word':
+        this.festivalService.speak(this.ttsText.split(' ').reverse()[0]);
+        break;
     }
   }
-  
+
+  onClickFileUploadButton(event) {
+    const reader = new FileReader();
+    reader.readAsText(event.srcElement.files[0]);
+    reader.onload = function () {
+      this.ttsText = reader.result;
+    };
+  }
+
+  onClickSaveButton(){
+
+  }
+
 }
