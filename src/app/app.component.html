@@ -1,23 +1,54 @@
-<mat-card>
-    <mat-checkbox name="realtimeEnabled" [(ngModel)]="realtimeEnabled">Realtime</mat-checkbox>
+<div>  
+    <!-- Top bar -->
+    <mat-toolbar color="primary">  
+        <mat-toolbar-row>
+            <span>Audible Text Editor</span>
 
-    <button mat-raised-button [disabled]=realtimeEnabled color="primary" (click)="onClickReadButton()">Read</button>
+            <button mat-icon-button> <mat-icon>help_outline</mat-icon></button>
+            
+                
+        </mat-toolbar-row>
+    </mat-toolbar>
 
-    <mat-radio-group [disabled]=realtimeEnabled name="ttsType" [(ngModel)]="ttsType">
-        <mat-radio-button value="document">Document</mat-radio-button>
-        <mat-radio-button value="sentence">Sentence</mat-radio-button>
-        <mat-radio-button value="word">Word</mat-radio-button>
-    </mat-radio-group>
+    <mat-card class="editor">
+        
+        <!-- Speech tools -->
+        <div class="speech-tools">
+            
+            <mat-checkbox class="align-left" name="realtimeEnabled" [(ngModel)]="realtimeEnabled">Realtime speech</mat-checkbox>
+            
+            <div class="align-right">
+                <mat-radio-group [disabled]=realtimeEnabled name="ttsType" [(ngModel)]="ttsType">
+                    <mat-radio-button value="document">Document</mat-radio-button>
+                    <mat-radio-button value="sentence">Sentence</mat-radio-button>
+                    <mat-radio-button value="word">Word</mat-radio-button>
+                </mat-radio-group>
+                
+                <button mat-raised-button [disabled]=realtimeEnabled color="primary" (click)="onClickReadButton()"><mat-icon>volume_up</mat-icon> Read</button>
+                
+            </div>
+        </div>
+            
+        <!-- Editor area -->
+        <mat-form-field>
+            <textarea matInput class="text-editor" name="ttsText" [(ngModel)]="ttsText" (keypress)="onTextChange($event)"
+            placeholder="Type your text here"></textarea>
+        </mat-form-field>
 
-</mat-card>
-
-<br> <mat-divider></mat-divider> <br>
-
-<mat-form-field>
-    <textarea matInput class="text-editor" name="ttsText" [(ngModel)]="ttsText" (keypress)="onTextChange($event)"
-              placeholder="Type your text here"></textarea>
-</mat-form-field>
-
-<button mat-raised-button color="primary" class="doc-buttons" (click)="onClickSaveButton()">Save</button>
-
-<input id="file-upload" class="btn-file" type="file" accept=".txt" (change)="onClickFileUploadButton($event)" value="">
+        <!-- Bottom panel -->
+        <div class="bottom-panel">
+            <!-- save button -->
+            <button mat-button color="primary" class="align-right" (click)="onClickSaveButton()">Save</button>
+    
+            <!-- upload button -->
+            <span color="red">Upload: </span> <input id="file-upload" class="" type="file" accept=".txt" (change)="onClickFileUploadButton($event)" value="">
+            
+        </div>
+        
+    </mat-card>
+            
+ 
+            
+            
+            
+        </div>
