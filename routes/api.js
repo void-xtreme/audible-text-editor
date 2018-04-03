@@ -11,7 +11,7 @@ const voice          = "voice_ucsc_sin_sdn_diphone";
 // Generate command
 function generateCommand(text, voice, output){
   // var command = util.format("echo '%s' | text2wave -o %s -eval '(%s)'", text, output, voice);
-  var command = util.format("echo '%s' | text2wave -o %s", text, output);
+  var command = util.format("echo '%s' | text2wave -o %s -eval \"(%s)\"", text, output, voice);
   return command;
 };
 
