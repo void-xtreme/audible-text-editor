@@ -13,12 +13,12 @@ export class FestivalService {
   }
 
   speak(text: string) {
-    this.http.get('http://localhost:3000/api/generate/' + text).subscribe(data => {
+    this.http.get('/api/generate/' + text).subscribe(data => {
       console.log(data);
 
       // Setup the new Howl.
       const sound = new Howl({
-        src: ['http://localhost:3000/output/' + data]
+        src: ['/output/' + data]
       });
 
       // Play the sound.
