@@ -19,16 +19,24 @@ export class AppComponent {
 
   }
 
+  prepareText(text){
+    while (text.slice(-1) == '.' || text.slice(-1) == ' '){
+      text = text.slice(0, text.length - 1);
+    }
+    return text;
+  }
+
   onClickReadButton() {
+    var text = this.prepareText(this.ttsText);
     switch (this.ttsType) {
       case 'document':
-        this.festivalService.speak(this.ttsText);
+        this.festivalService.speak(text);
         break;
       case 'sentence':
-        this.festivalService.speak(this.ttsText.split('.').reverse()[0]);
+        this.festivalService.speak(text.split('.').reverse()[0]);
         break;
       case 'word':
-        this.festivalService.speak(this.ttsText.split(' ').reverse()[0]);
+        this.festivalService.speak(text.split(' ').reverse()[0]);
         break;
     }
   }

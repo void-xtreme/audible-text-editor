@@ -13,6 +13,7 @@ export class FestivalService {
   }
 
   speak(text: string) {
+    console.log("speaking " + text);
     this.http.get('/api/generate/' + text).subscribe(data => {
       console.log(data);
 
