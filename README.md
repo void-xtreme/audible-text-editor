@@ -2,6 +2,18 @@
 An automated Sinhala audio Text Editor for visually impaired and blind students
 
 ![ate-running](https://thumbs.gfycat.com/DefiniteWeeklyGreyhounddog-size_restricted.gif)
+
+## Running with Docker
+Ensure `docker` and `docker-compose` are installed on your machine.
+
+Clone the repository and run the following command. 
+
+```bash
+docker-compose up --build
+```
+
+You will be able to access the application on [localhost:3001](localhost:3001)
+
 ## Installation
 ### Pre-requisites
 * NodeJS 6.X or higher
@@ -50,3 +62,5 @@ $ npm start
 ```
 ![start-server](https://thumbs.gfycat.com/BlueFakeAlpaca-size_restricted.gif)
     
+### Contributors
+- Bhagya Nirmaan Silva ([about.me/bhagyas](about.me/bhagyas))
